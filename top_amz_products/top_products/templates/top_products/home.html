@@ -1,0 +1,101 @@
+{% extends "top_products/base.html" %}
+
+{% block page_content %}
+
+<body>
+    <h2>Choose a Category for Its Best Sellers</h2>
+    <ul>
+        {% if top_sellers_list %}
+        {% for name, category_link in top_sellers_list.items %}
+        <li class="categoryList"><a href="{{category_link}}">{{name}}</a></li>
+        <!-- <li class="categoryList">{{name}}</a></li> -->
+
+        {% endfor %}
+        {% else %}
+        <li>No data available</li>
+        {% endif %}
+    </ul>
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+
+            if (parts.length === 2) {
+                return parts.pop().split(';').shift();
+            }
+        }
+
+        // grab all links that were passed from the view to this template. 
+
+        let categories = document.querySelectorAll(".categoryList a");
+
+
+        // Loop thru each of the links and add an event listener. 
+        categories.forEach(category => {
+            category.addEventListener("click", function (event) {
+
+                console.log('Event listener is working!')
+
+                let url = category.getAttribute('href');
+                console.log("Clicked URL:", url);
+                event.preventDefault();
+
+
+
+                // Need to send the AJAX to View
+
+                let ajax_requested = new XMLHttpRequest();
+                ajax_requested.open('POST', '/scraping_data/', true);
+
+                ajax_requested.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+                ajax_requested.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+
+                console.log("URL before appending to FormData:", url);
+                let formData = new FormData();
+                formData.append("url", url);
+                console.log("FormData:", formData.get('url'));
+
+
+
+                ajax_requested.onreadystatechange = function () {
+
+                    console.log("Ready State:", ajax_requested.readyState);
+                    console.log("Status:", ajax_requested.status);
+
+                    if (ajax_requested.readyState == 4 && ajax_requested.status == 200) {
+                        let response = JSON.parse(ajax_requested.responseText);
+                        console.log("Response:", response);
+
+                        for (i = 0; i < response['product_name'][0].length; i++) {
+                            console.log(response['product_name'][i]);
+
+                        }
+                        if ('product_name' in response && Array.isArray(response.product_name) && response.product_name.length > 0) {
+
+
+
+                        }
+                        else {
+                            console.log("Product name not found in the response.");
+                        }
+                    }
+                    else {
+                        console.log("Request failed with status:", ajax_requested.status);
+                    }
+
+                }
+                ajax_requested.send(formData);
+
+                // ajax_requested.send("url=" + encodeURIComponent(url));
+            })
+
+
+        });
+
+
+    </script>
+
+</body>
+
+
+{% endblock page_content %}

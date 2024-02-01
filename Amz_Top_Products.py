@@ -15,11 +15,14 @@ driver = webdriver.Chrome(service=ChromeService(
 
 # scrapping website
 web = 'https://www.amazon.com/best-sellers-books-Amazon/zgbs/books/'
-driver.get(web)
+bestseller_page = 'https://www.amazon.com/Best-Sellers/zgbs/'
+# driver.get(web)
+driver.get(bestseller_page)
 # Books = "apple airpods"
 
 product_name = []
 product_images = []
+top_seller_list = []
 
 driver.maximize_window()
 
@@ -33,37 +36,42 @@ driver.maximize_window()
 # )
 # search_button.click()
 
+categories = WebDriverWait(driver, 10).until(
+    EC.presence_of_all_elements_located((By.XPATH, '//div[contains(@class, "_p13n-zg-nav-tree-all_style_zg-browse-item__1rdKf")]')))
+for category in categories:
+    name_category = category.find_element(
+        By.XPATH, './/a[@href]')
+    top_seller_list.append(name_category.text)
 
-products = WebDriverWait(driver, 10).until(
-    EC.presence_of_all_elements_located(
-        (By.XPATH, '//div[contains(@id, "gridItemRoot")]')))
 
-# Getting product title
-for product in products:
-    name = product.find_element(By.XPATH,
-                                './/div[@class="_cDEzb_p13n-sc-css-line-clamp-1_1Fn1y"]')
-    product_name.append(name.text)
+    
 
-# Getting images from product
+# products = WebDriverWait(driver, 10).until(
+#     EC.presence_of_all_elements_located(
+#         (By.XPATH, '//div[contains(@id, "gridItemRoot")]')))
+
+# # Getting product title
 # for product in products:
-#     images = product.find_element(
-#         By.XPATH, './/img[@class="a-dynamic-image p13n-sc-dynamic-image p13n-product-image"]').get_attribute("src")
-#     product_images.append(images)
+#     name = product.find_element(By.XPATH,
+#                                 './/div[@class="_cDEzb_p13n-sc-css-line-clamp-1_1Fn1y"]')
+#     product_name.append(name.text)
 
-for product in products:
-    images = WebDriverWait(product, 10).until(
-        EC.presence_of_all_elements_located(
-            (By.XPATH, './/img[@class="a-dynamic-image p13n-sc-dynamic-image p13n-product-image"]'))
+    #getting images for the product. 
 
-    )
+# for product in products:
+#     images = WebDriverWait(product, 10).until(
+#         EC.presence_of_all_elements_located(
+#             (By.XPATH, './/img[@class="a-dynamic-image p13n-sc-dynamic-image p13n-product-image"]'))
 
-    for image in images:
-        product_images.append(image.get_attribute("src"))
+#     )
+
+#     for image in images:
+#         product_images.append(image.get_attribute("src"))
 
 
-# driver.implicitly_wait(10)
-print(product_name)
-print(product_images)
+# print(product_name)
+# print(product_images)
+print(top_seller_list)
 
 input("Press Enter to exit...")
 
