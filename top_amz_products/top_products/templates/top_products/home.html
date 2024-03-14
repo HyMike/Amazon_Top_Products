@@ -1,21 +1,58 @@
 {% extends "top_products/base.html" %}
+{% load static %}
+
 
 {% block page_content %}
 
-<body>
     <h2>Choose a Category for Its Best Sellers</h2>
+    <form id ="category_form" method="POST" action= "{% url 'products_stats' %}" >
+        {% csrf_token %}
     <ul>
+        {% for category in best_seller_categories %}
+            {% comment %} 
+            have a reverse url that send it back to the view where the view will cause the driver to scrape whatever it is.
+            but you need to pass that data to the backend.  
+            Maybe you don't want to send the data to the template. 
+            Just retrieve whatever is being pressed. 
+
+            You want to look it up by their id so send the hidden form data to backend to trigger the scrape_category to do the scraping.
+            {% endcomment %}
+            <li><a href="#" onclick="selected_category_submit('{{ category.link }}')">{{ category.name }}</a></li>
+
+
+
+            {% comment %} send category.id back to the backend so it can be processed.  {% endcomment %}
+        {% endfor %}
+    </ul>
+    <input type="hidden" name="selected_category_url" id='selected_category_url'> 
+
+
+    </form>
+
+    <script>
+        function selected_category_submit(categoryURL) {
+            console.log(categoryURL);
+            document.getElementById('selected_category_url').value = categoryURL;
+            document.getElementById('category_form').submit();
+        }
+
+    </script>
+
+    {% comment %} <ul class="topListElement">
         {% if top_sellers_list %}
         {% for name, category_link in top_sellers_list.items %}
-        <li class="categoryList"><a href="{{category_link}}">{{name}}</a></li>
-        <!-- <li class="categoryList">{{name}}</a></li> -->
-
+        <li class="categoryList" type="1"><a href="{{category_link}}">{{name}}</a></li>
         {% endfor %}
         {% else %}
         <li>No data available</li>
         {% endif %}
-    </ul>
-    <script>
+    </ul> {% endcomment %}
+
+
+
+    {% comment %} <script>
+
+
         function getCookie(name) {
             const value = `; ${document.cookie}`;
             const parts = value.split(`; ${name}=`);
@@ -30,17 +67,13 @@
         let categories = document.querySelectorAll(".categoryList a");
 
 
-        // Loop thru each of the links and add an event listener. 
+        // Loop thru each of the links and add an event listener of the category list. 
         categories.forEach(category => {
             category.addEventListener("click", function (event) {
-
-                console.log('Event listener is working!')
 
                 let url = category.getAttribute('href');
                 console.log("Clicked URL:", url);
                 event.preventDefault();
-
-
 
                 // Need to send the AJAX to View
 
@@ -55,6 +88,8 @@
                 formData.append("url", url);
                 console.log("FormData:", formData.get('url'));
 
+                // check when the ajax request is ready
+                //this is where you want to do with the data. 
 
 
                 ajax_requested.onreadystatechange = function () {
@@ -66,18 +101,11 @@
                         let response = JSON.parse(ajax_requested.responseText);
                         console.log("Response:", response);
 
-                        for (i = 0; i < response['product_name'][0].length; i++) {
-                            console.log(response['product_name'][i]);
 
-                        }
-                        if ('product_name' in response && Array.isArray(response.product_name) && response.product_name.length > 0) {
+                        window.location.href = "{% url 'products' %}";
 
 
 
-                        }
-                        else {
-                            console.log("Product name not found in the response.");
-                        }
                     }
                     else {
                         console.log("Request failed with status:", ajax_requested.status);
@@ -86,16 +114,14 @@
                 }
                 ajax_requested.send(formData);
 
-                // ajax_requested.send("url=" + encodeURIComponent(url));
             })
 
 
         });
 
 
-    </script>
+    </script> {% endcomment %}
 
-</body>
 
 
 {% endblock page_content %}

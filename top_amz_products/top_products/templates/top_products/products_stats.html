@@ -1,0 +1,12 @@
+{% extends "top_products/base.html" %}
+
+{% block page_content %}
+
+    <h1>HELLO</h1>
+    <ul>
+        {% for product in products %}
+        <li>{{product}}</li>
+        {% endfor %}
+    </ul>
+
+{% endblock page_content %}
