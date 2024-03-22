@@ -29,6 +29,11 @@
 
     </form>
 
+    {% comment %} <section>
+        <h1>Graph!</h1>
+        <img src="data:image/png;base64,{{ graphics }}" alt="My Plot">
+    </section> {% endcomment %}
+
     <script>
         function selected_category_submit(categoryURL) {
             console.log(categoryURL);
@@ -37,6 +42,10 @@
         }
 
     </script>
+
+    
+
+
 
     {% comment %} <ul class="topListElement">
         {% if top_sellers_list %}

@@ -9,4 +9,13 @@
         {% endfor %}
     </ul>
 
+    <section>
+        <h1> graph </h1>
+        {% for graph in graphs %}
+        <ul>
+        <li><img src="data:image/png;base64,{{ graph }}" alt="My Plot"> </li>
+        </ul>
+        {% endfor %}
+    </section>
+
 {% endblock page_content %}
