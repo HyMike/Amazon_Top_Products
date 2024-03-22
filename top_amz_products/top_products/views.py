@@ -52,23 +52,8 @@ def home(request):
 
 def my_plot_view(trending_data):
     # Non-interactive graph
+
     matplotlib.use('Agg')
-    # print("this is the trending_data:", trending_data)
-    # images = []
-
-    # Get the number of queries
-    # num_queries = len(trending_data)
-
-    # Determine the number of rows and columns for subplots
-    # num_rows = num_queries // 2  # You can adjust the number of rows as needed
-    # num_cols = 2  # 2 columns, you can adjust this based on your preference
-
-    # Create subplots
-    # fig, axes = plt.subplots(num_rows, num_cols, figsize=(12, 8))
-
-    # Flatten axes if it's a 1D array
-    # if not isinstance(axes, np.ndarray):
-    #     axes = np.array([axes])
 
     images = []
 
@@ -82,17 +67,6 @@ def my_plot_view(trending_data):
             x = dates  # time
             y = values  # interest
 
-    # for i, (product_name, query_data) in enumerate(trending_data.items()):
-    #     dates = query_data.get('date')
-    #     values = query_data.get('value')
-
-        # Check if both dates and values are present
-        # if dates is not None and values is not None:
-            # Determine the current axis
-            # ax = axes[i // num_cols, i %
-            #           num_cols] if num_rows > 1 else axes[i % num_cols]
-
-    # Generate your data and plot here
         plt.figure(figsize=(10, 8))
 
         plt.plot(x, y)
