@@ -2,10 +2,14 @@
 
 {% block page_content %}
 
-    <h1>HELLO</h1>
     <ul>
         {% for product in products %}
         <li>{{product}}</li>
+        {% endfor %}
+    </ul>
+    <ul>
+        {% for images in product_images %}
+        <li><img src="{images}"> </li>
         {% endfor %}
     </ul>
 

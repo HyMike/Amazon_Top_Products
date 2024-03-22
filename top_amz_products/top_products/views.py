@@ -22,6 +22,8 @@ import matplotlib
 import io
 import urllib
 import base64
+import os
+from dotenv import load_dotenv
 
 
 # create the list of categories
@@ -41,9 +43,6 @@ def home(request):
 
     # trends_overtime = pytrends.interest_over_time()
     # print(trends_overtime)
-
-    # matplot
-    # graphics = my_plot_view()
 
     return render(request, 'top_products/home.html', {"best_seller_categories": best_seller_categories, })
 
@@ -138,6 +137,7 @@ def products_stats(request):
 
         driver.get(category_url)
         product_names = []
+        product_images = []
 
         # get the top level element
         products = WebDriverWait(driver, 10).until(
@@ -151,14 +151,31 @@ def products_stats(request):
             # './/div[@class="._cDEzb_p13n-sc-css-line-clamp-2_EWgCb"]')
             product_names.append(name.text)
 
+        for product in products:
+            images = WebDriverWait(product, 10).until(
+                EC.presence_of_all_elements_located(
+                    (By.XPATH, './/img[@class="a-dynamic-image p13n-sc-dynamic-image p13n-product-image"]'))
+
+            )
+
+        for image in images:
+            product_images.append(image.get_attribute("src"))
+
+        print(product_images)
+
         # returns list of 3 best sellers on Amazon from selected category that has been striped of title and package amounts to be searched
+        # testing images
+
         formatted_content = json.loads(format_content(product_names))
 
         driver.quit()
+
         trending_data = get_trending_data(formatted_content)
+
         graphs = my_plot_view(trending_data)
 
         return render(request, 'top_products/products_stats.html', {'products': formatted_content, 'graphs': graphs, })
+        # return render(request, 'top_products/products_stats.html', {"product_images": product_images})
         # print(product_name)
 
 
@@ -170,7 +187,7 @@ def get_trending_data(amz_product_list):
         "engine": "google_trends",
         "q": keywords,
         "data_type": "TIMESERIES",
-        "api_key": "ac849b8873e98167d3cab493398ec586a0164b6b63715b2fa532f31e834846e4"
+        "api_key": os.getenv("SERPAPI_KEY")
     }
 
     search = GoogleSearch(params)
