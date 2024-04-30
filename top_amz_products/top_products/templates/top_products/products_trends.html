@@ -1,6 +1,13 @@
 {% extends "top_products/base.html" %}
+{% load static %}
+
+{% block styles_css %}
+    <link rel="stylesheet" href="{% static 'top_products/base.css' %}">
+    <link rel="stylesheet" href="{% static 'top_products/products_trends.css' %}">
+{% endblock %}
 
 {% block page_content %}
+
 
 
     <section>
