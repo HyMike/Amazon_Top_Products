@@ -12,6 +12,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from .models import Best_Sellers_List
 from .forms import CategoryForm
 from openai import OpenAI
+import openai
 import json
 from pytrends.request import TrendReq
 from serpapi import GoogleSearch
@@ -161,8 +162,6 @@ def products_stats(request):
         for image in images:
             product_images.append(image.get_attribute("src"))
 
-        print(product_images)
-
         # returns list of 3 best sellers on Amazon from selected category that has been striped of title and package amounts to be searched
         # testing images
 
@@ -176,7 +175,6 @@ def products_stats(request):
 
         return render(request, 'top_products/products_stats.html', {'products': formatted_content, 'graphs': graphs, })
         # return render(request, 'top_products/products_stats.html', {"product_images": product_images})
-        # print(product_name)
 
 
 def get_trending_data(amz_product_list):
@@ -229,5 +227,4 @@ def extract_data(interest_over_time):
             # extracted_data[query]['name'].append(query)
 
     # Print the extracted data
-    print("this is the extracted data: ", extracted_data)
     return extracted_data

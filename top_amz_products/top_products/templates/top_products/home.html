@@ -1,33 +1,48 @@
 {% extends "top_products/base.html" %}
 {% load static %}
 
+{% block styles_css %}
+    <link rel="stylesheet" href="{% static 'top_products/base.css' %}">
+    <link rel="stylesheet" href="{% static 'top_products/home.css' %}">
+{% endblock %}
+
 
 {% block page_content %}
 
-    <h2>Choose a Category for Its Best Sellers</h2>
-    <form id ="category_form" method="POST" action= "{% url 'products_stats' %}" >
-        {% csrf_token %}
-    <ul>
-        {% for category in best_seller_categories %}
-            {% comment %} 
-            have a reverse url that send it back to the view where the view will cause the driver to scrape whatever it is.
-            but you need to pass that data to the backend.  
-            Maybe you don't want to send the data to the template. 
-            Just retrieve whatever is being pressed. 
+        <h2>Discover Trends with Amazon's Best Sellers List</h2>
+        <form id ="category_form" method="POST" action= "{% url 'products_stats' %}" >
+            {% csrf_token %}
+    <div id='categories'>
+        <ul class="category-list">
+            {% for category in best_seller_categories %}
+                {% comment %} 
+                have a reverse url that send it back to the view where the view will cause the driver to scrape whatever it is.
+                but you need to pass that data to the backend.  
+                Maybe you don't want to send the data to the template. 
+                Just retrieve whatever is being pressed. 
 
-            You want to look it up by their id so send the hidden form data to backend to trigger the scrape_category to do the scraping.
-            {% endcomment %}
-            <li><a href="#" onclick="selected_category_submit('{{ category.link }}')">{{ category.name }}</a></li>
+                You want to look it up by their id so send the hidden form data to backend to trigger the scrape_category to do the scraping.
+                {% endcomment %}
+                <li>
+                    <a href="#" onclick="selected_category_submit('{{ category.link }}')">
+                        <img src="{% static "top_products/images/"|add:category.slug|add:".png" %}">
+                        <span class='categories_name'>{{ category.name }}</span>
+                    </a>
+                    
+                </li>
+
+                {% comment %} <img src="{% static "top_products/images/"|add:category.slug|add:".png" %}">     {% endcomment %}
 
 
+                {% comment %} send category.id back to the backend so it can be processed.  {% endcomment %}
+            {% endfor %}
+        </ul>
+        <input type="hidden" name="selected_category_url" id='selected_category_url'> 
+    </div>
 
-            {% comment %} send category.id back to the backend so it can be processed.  {% endcomment %}
-        {% endfor %}
-    </ul>
-    <input type="hidden" name="selected_category_url" id='selected_category_url'> 
 
+        </form>
 
-    </form>
 
     {% comment %} <section>
         <h1>Graph!</h1>
