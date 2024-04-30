@@ -132,6 +132,8 @@ def products_trends(request):
 
     if request.method == 'POST':
         category_url = request.POST.get('selected_category_url')
+        category_name = request.POST.get('selected_category_name')
+        print(category_name)
         driver = webdriver.Chrome(service=ChromeService(
             ChromeDriverManager().install()))
 
@@ -172,7 +174,7 @@ def products_trends(request):
 
         graphs = my_plot_view(trending_data)
 
-        return render(request, 'top_products/products_trends.html', {'products': formatted_content, 'graphs': graphs, })
+        return render(request, 'top_products/products_trends.html', {'products': formatted_content, 'graphs': graphs, 'category_name': category_name, })
         # return render(request, 'top_products/products_stats.html', {"product_images": product_images})
 
 
