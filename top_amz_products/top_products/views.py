@@ -12,7 +12,6 @@ from selenium.webdriver.support import expected_conditions as EC
 from .models import Best_Sellers_List
 from .forms import CategoryForm
 from openai import OpenAI
-import openai
 import json
 from pytrends.request import TrendReq
 from serpapi import GoogleSearch
@@ -129,7 +128,7 @@ def format_content(title_list):
     return filtered_titles
 
 
-def products_stats(request):
+def products_trends(request):
 
     if request.method == 'POST':
         category_url = request.POST.get('selected_category_url')
@@ -173,7 +172,7 @@ def products_stats(request):
 
         graphs = my_plot_view(trending_data)
 
-        return render(request, 'top_products/products_stats.html', {'products': formatted_content, 'graphs': graphs, })
+        return render(request, 'top_products/products_trends.html', {'products': formatted_content, 'graphs': graphs, })
         # return render(request, 'top_products/products_stats.html', {"product_images": product_images})
 
 
