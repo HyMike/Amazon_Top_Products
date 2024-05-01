@@ -31,10 +31,7 @@
                     
                 </li>
 
-                {% comment %} <img src="{% static "top_products/images/"|add:category.slug|add:".png" %}">     {% endcomment %}
-
-
-                {% comment %} send category.id back to the backend so it can be processed.  {% endcomment %}
+               
       
             {% endfor %}
         </ul>
@@ -47,10 +44,6 @@
         </form>
 
 
-    {% comment %} <section>
-        <h1>Graph!</h1>
-        <img src="data:image/png;base64,{{ graphics }}" alt="My Plot">
-    </section> {% endcomment %}
 
     <script>
         function selected_category_submit(categoryURL, categoryName) {
@@ -62,95 +55,5 @@
         }
 
     </script>
-
-    
-
-
-
-    {% comment %} <ul class="topListElement">
-        {% if top_sellers_list %}
-        {% for name, category_link in top_sellers_list.items %}
-        <li class="categoryList" type="1"><a href="{{category_link}}">{{name}}</a></li>
-        {% endfor %}
-        {% else %}
-        <li>No data available</li>
-        {% endif %}
-    </ul> {% endcomment %}
-
-
-
-    {% comment %} <script>
-
-
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-
-            if (parts.length === 2) {
-                return parts.pop().split(';').shift();
-            }
-        }
-
-        // grab all links that were passed from the view to this template. 
-
-        let categories = document.querySelectorAll(".categoryList a");
-
-
-        // Loop thru each of the links and add an event listener of the category list. 
-        categories.forEach(category => {
-            category.addEventListener("click", function (event) {
-
-                let url = category.getAttribute('href');
-                console.log("Clicked URL:", url);
-                event.preventDefault();
-
-                // Need to send the AJAX to View
-
-                let ajax_requested = new XMLHttpRequest();
-                ajax_requested.open('POST', '/scraping_data/', true);
-
-                ajax_requested.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-                ajax_requested.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
-
-                console.log("URL before appending to FormData:", url);
-                let formData = new FormData();
-                formData.append("url", url);
-                console.log("FormData:", formData.get('url'));
-
-                // check when the ajax request is ready
-                //this is where you want to do with the data. 
-
-
-                ajax_requested.onreadystatechange = function () {
-
-                    console.log("Ready State:", ajax_requested.readyState);
-                    console.log("Status:", ajax_requested.status);
-
-                    if (ajax_requested.readyState == 4 && ajax_requested.status == 200) {
-                        let response = JSON.parse(ajax_requested.responseText);
-                        console.log("Response:", response);
-
-
-                        window.location.href = "{% url 'products' %}";
-
-
-
-                    }
-                    else {
-                        console.log("Request failed with status:", ajax_requested.status);
-                    }
-
-                }
-                ajax_requested.send(formData);
-
-            })
-
-
-        });
-
-
-    </script> {% endcomment %}
-
-
 
 {% endblock page_content %}
