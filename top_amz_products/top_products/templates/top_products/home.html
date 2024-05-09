@@ -1,0 +1,59 @@
+{% extends "top_products/base.html" %}
+{% load static %}
+
+{% block styles_css %}
+    <link rel="stylesheet" href="{% static 'top_products/base.css' %}">
+    <link rel="stylesheet" href="{% static 'top_products/home.css' %}">
+{% endblock %}
+
+
+{% block page_content %}
+
+        <h2>Discover Trends with Amazon's Best Sellers List</h2>
+        <form id ="category_form" method="POST" action= "{% url 'products_trends' %}" >
+            {% csrf_token %}
+    <div id='categories'>
+        <ul class="category-list">
+            {% for category in best_seller_categories %}
+                {% comment %} 
+                have a reverse url that send it back to the view where the view will cause the driver to scrape whatever it is.
+                but you need to pass that data to the backend.  
+                Maybe you don't want to send the data to the template. 
+                Just retrieve whatever is being pressed. 
+
+                You want to look it up by their id so send the hidden form data to backend to trigger the scrape_category to do the scraping.
+                {% endcomment %}
+                <li>
+                    <a href="#" onclick="selected_category_submit('{{ category.link }}', '{{ category.name }}')">
+                        <img src="{% static "top_products/images/"|add:category.slug|add:".png" %}">
+                        <span class='categories_name'>{{ category.name }}</span>
+                    </a>
+                    
+                </li>
+
+               
+      
+            {% endfor %}
+        </ul>
+        <input type="hidden" name="selected_category_url" id='selected_category_url'>
+        <input type="hidden" name="selected_category_name" id='selected_category_name' value="{{ category.name }}">
+
+    </div>
+
+
+        </form>
+
+
+
+    <script>
+        function selected_category_submit(categoryURL, categoryName) {
+            console.log(categoryURL);
+            console.log(categoryName);
+            document.getElementById('selected_category_url').value = categoryURL;
+            document.getElementById('selected_category_name').value = categoryName;
+            document.getElementById('category_form').submit();
+        }
+
+    </script>
+
+{% endblock page_content %}

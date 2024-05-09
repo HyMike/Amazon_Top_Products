@@ -1,0 +1,22 @@
+{% extends "top_products/base.html" %}
+{% load static %}
+
+{% block styles_css %}
+    <link rel="stylesheet" href="{% static 'top_products/base.css' %}">
+    <link rel="stylesheet" href="{% static 'top_products/products_trends.css' %}">
+{% endblock %}
+
+{% block page_content %}
+
+
+
+    <section>
+        <h1> Top 3 Products from {{ category_name }}</h1>
+        {% for graph in graphs %}
+        <ul>
+        <li><img src="data:image/png;base64,{{ graph }}" alt="My Plot"> </li>
+        </ul>
+        {% endfor %}
+    </section>
+
+{% endblock page_content %}

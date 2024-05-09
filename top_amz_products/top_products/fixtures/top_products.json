@@ -1,0 +1,281 @@
+[
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 1,
+        "fields": {
+            "name": "Appliances Things",
+            "slug": "Appliances",
+            "link": "https://www.amazon.com/Best-Sellers-Appliances/zgbs/appliances/ref=zg_bs_nav_appliances_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 2,
+        "fields": {
+            "name": "Arts, Crafts & Sewing",
+            "slug": "Arts_Crafts_Sewing",
+            "link": "https://www.amazon.com/Best-Sellers-Arts-Crafts-Sewing/zgbs/arts-crafts/ref=zg_bs_nav_arts-crafts_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 3,
+        "fields": {
+            "name": "Automotive",
+            "slug": "Automobile",
+            "link": "https://www.amazon.com/Best-Sellers-Automotive/zgbs/automotive/ref=zg_bs_nav_automotive_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 4,
+        "fields": {
+            "name": "Baby",
+            "slug": "Baby",
+            "link": "https://www.amazon.com/Best-Sellers-Baby/zgbs/baby-products/ref=zg_bs_nav_baby-products_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 5,
+        "fields": {
+            "name": "Beauty & Personal Care",
+            "slug": "Beauty_Personal",
+            "link": "https://www.amazon.com/Best-Sellers-Beauty-Personal-Care/zgbs/beauty/ref=zg_bs_nav_beauty_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 6,
+        "fields": {
+            "name": "Books",
+            "slug": "Books",
+            "link": "https://www.amazon.com/best-sellers-books-Amazon/zgbs/books/ref=zg_bs_nav_books_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 7,
+        "fields": {
+            "name": "Camera & Photo Products",
+            "slug": "Camera",
+            "link": "https://www.amazon.com/best-sellers-camera-photo/zgbs/photo/ref=zg_bs_nav_photo_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 8,
+        "fields": {
+            "name": "Cell Phones & Accessories",
+            "slug": "Cellphones",
+            "link": "https://www.amazon.com/Best-Sellers-Cell-Phones-Accessories/zgbs/wireless/ref=zg_bs_nav_wireless_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 9,
+        "fields": {
+            "name": "Climate Pledge Friendly",
+            "slug": "Climate_Pledge",
+            "link": "https://www.amazon.com/Best-Sellers-Climate-Pledge-Friendly/zgbs/climate-pledge/ref=zg_bs_nav_climate-pledge_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 10,
+        "fields": {
+            "name": "Clothing, Shoes & Jewelry",
+            "slug": "Clothing_Shoes_Jewelry",
+            "link": "https://www.amazon.com/Best-Sellers-Clothing-Shoes-Jewelry/zgbs/fashion/ref=zg_bs_nav_fashion_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 11,
+        "fields": {
+            "name": "Computers & Accessories",
+            "slug": "Computers_Accessories",
+            "link": "https://www.amazon.com/Best-Sellers-Computers-Accessories/zgbs/pc/ref=zg_bs_nav_pc_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 12,
+        "fields": {
+            "name": "Electronics",
+            "slug": "Electronics",
+            "link": "https://www.amazon.com/Best-Sellers-Electronics/zgbs/electronics/ref=zg_bs_nav_electronics_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 13,
+        "fields": {
+            "name": "Entertainment Collectibles",
+            "slug": "Entertainment_Collectible",
+            "link": "https://www.amazon.com/Best-Sellers-Entertainment-Collectibles/zgbs/entertainment-collectibles/ref=zg_bs_nav_entertainment-collectibles_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 14,
+        "fields": {
+            "name": "Grocery & Gourmet Food",
+            "slug": "Grocery_Gourmet",
+            "link": "https://www.amazon.com/Best-Sellers-Grocery-Gourmet-Food/zgbs/grocery/ref=zg_bs_nav_grocery_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 15,
+        "fields": {
+            "name": "Handmade Products",
+            "slug": "Handmade",
+            "link": "https://www.amazon.com/Best-Sellers-Handmade-Products/zgbs/handmade/ref=zg_bs_nav_handmade_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 16,
+        "fields": {
+            "name": "Health & Household",
+            "slug": "Health_Household",
+            "link": "https://www.amazon.com/Best-Sellers-Health-Household/zgbs/hpc/ref=zg_bs_nav_hpc_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 17,
+        "fields": {
+            "name": "Home & Kitchen",
+            "slug": "Home_Kitchen",
+            "link": "https://www.amazon.com/Best-Sellers-Home-Kitchen/zgbs/home-garden/ref=zg_bs_nav_home-garden_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 18,
+        "fields": {
+            "name": "Industrial & Scientific",
+            "slug": "Industrial_Scientific",
+            "link": "https://www.amazon.com/Best-Sellers-Industrial-Scientific/zgbs/industrial/ref=zg_bs_nav_industrial_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 19,
+        "fields": {
+            "name": "Kitchen & Dining",
+            "slug": "Kitchen_Dining",
+            "link": "https://www.amazon.com/Best-Sellers-Kitchen-Dining/zgbs/kitchen/ref=zg_bs_nav_kitchen_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 20,
+        "fields": {
+            "name": "Movies & TV",
+            "slug": "Movies_TV",
+            "link": "https://www.amazon.com/best-sellers-movies-TV-DVD-Blu-ray/zgbs/movies-tv/ref=zg_bs_nav_movies-tv_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 21,
+        "fields": {
+            "name": "Musical Instruments",
+            "slug": "Musical_Instruments",
+            "link": "https://www.amazon.com/Best-Sellers-Musical-Instruments/zgbs/musical-instruments/ref=zg_bs_nav_musical-instruments_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 22,
+        "fields": {
+            "name": "Office Products",
+            "slug": "Office_Products",
+            "link": "https://www.amazon.com/Best-Sellers-Office-Products/zgbs/office-products/ref=zg_bs_nav_office-products_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 23,
+        "fields": {
+            "name": "Patio, Lawn & Garden",
+            "slug": "Patio_Lawn_Garden",
+            "link": "https://www.amazon.com/Best-Sellers-Patio-Lawn-Garden/zgbs/lawn-garden/ref=zg_bs_nav_lawn-garden_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 24,
+        "fields": {
+            "name": "Pet Supplies",
+            "slug": "Pet_Supplies",
+            "link": "https://www.amazon.com/Best-Sellers-Pet-Supplies/zgbs/pet-supplies/ref=zg_bs_nav_pet-supplies_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 25,
+        "fields": {
+            "name": "Software",
+            "slug": "Software",
+            "link": "https://www.amazon.com/best-sellers-software/zgbs/software/ref=zg_bs_nav_software_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 26,
+        "fields": {
+            "name": "Sports & Outdoors",
+            "slug": "Sports_Outdoors",
+            "link": "https://www.amazon.com/Best-Sellers-Sports-Outdoors/zgbs/sporting-goods/ref=zg_bs_nav_sporting-goods_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 27,
+        "fields": {
+            "name": "Sports Collectibles",
+            "slug": "Sports_Collectibles",
+            "link": "https://www.amazon.com/Best-Sellers-Sports-Collectibles/zgbs/sports-collectibles/ref=zg_bs_nav_sports-collectibles_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 28,
+        "fields": {
+            "name": "Tools & Home Improvement",
+            "slug": "Tools_Home_Improvements",
+            "link": "https://www.amazon.com/Best-Sellers-Tools-Home-Improvement/zgbs/hi/ref=zg_bs_nav_hi_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 29,
+        "fields": {
+            "name": "Toys & Games",
+            "slug": "Toys_Games",
+            "link": "https://www.amazon.com/Best-Sellers-Toys-Games/zgbs/toys-and-games/ref=zg_bs_nav_toys-and-games_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 30,
+        "fields": {
+            "name": "Unique Finds",
+            "slug": "Unique_Finds",
+            "link": "https://www.amazon.com/Best-Sellers-Unique-Finds/zgbs/boost/ref=zg_bs_nav_boost_0"
+        }
+    },
+    {
+        "model": "top_products.Best_Sellers_List",
+        "pk": 31,
+        "fields": {
+            "name": "Video Games",
+            "slug": "Video_Games",
+            "link": "https://www.amazon.com/best-sellers-video-games/zgbs/videogames/ref=zg_bs_nav_videogames_0"
+        }
+    }
+]
