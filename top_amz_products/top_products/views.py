@@ -44,7 +44,8 @@ def home(request):
     # trends_overtime = pytrends.interest_over_time()
     # print(trends_overtime)
 
-    return render(request, 'top_products/home.html', {"best_seller_categories": best_seller_categories, })
+    return render(request, 'top_products/home.html',
+                  {"best_seller_categories": best_seller_categories, })
 
 
 # matplot code:
@@ -174,8 +175,10 @@ def products_trends(request):
 
         graphs = my_plot_view(trending_data)
 
-        return render(request, 'top_products/products_trends.html', {'products': formatted_content, 'graphs': graphs, 'category_name': category_name, })
-        # return render(request, 'top_products/products_stats.html', {"product_images": product_images})
+        return render(request, 'top_products/products_trends.html',
+                      {'products': formatted_content, 'graphs': graphs, 'category_name': category_name, })
+        # return render(request, 'top_products/products_stats.html',
+        # {"product_images": product_images})
 
 
 def get_trending_data(amz_product_list):
@@ -198,7 +201,8 @@ def get_trending_data(amz_product_list):
 # extract data to dictionary key being time vs value == the value
 
 # create a default dictionary that can be populated
-# use the formatted content and their order to populate the title for each of the graph.
+# use the formatted content and their order to populate the title for each
+# of the graph.
 
 
 def extract_data(interest_over_time):
@@ -216,7 +220,8 @@ def extract_data(interest_over_time):
             value = int(value_entry['value'])
             extracted_value = int(value_entry['extracted_value'])
 
-            # If the query is not in the extracted_data dictionary, create a new entry
+            # If the query is not in the extracted_data dictionary, create a
+            # new entry
             if query not in extracted_data:
                 extracted_data[query] = {'date': [],
                                          'value': [], 'extracted_value': []}
