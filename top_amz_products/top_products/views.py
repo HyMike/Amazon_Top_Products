@@ -1,7 +1,4 @@
-from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render
-
-# everything that is needed for selenium
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
@@ -13,7 +10,6 @@ from .models import Best_Sellers_List
 from .forms import CategoryForm
 from openai import OpenAI
 import json
-from pytrends.request import TrendReq
 from serpapi import GoogleSearch
 
 import matplotlib.pyplot as plt
@@ -32,17 +28,6 @@ from dotenv import load_dotenv
 
 def home(request):
     best_seller_categories = Best_Sellers_List.objects.all()
-    # pytrends
-
-    # pytrends = TrendReq()
-    # keywords = ['water']
-
-    # pytrends.build_payload(keywords, timeframe='today 12-m')
-
-    # trend_data = pytrends.interest_over_time()
-
-    # trends_overtime = pytrends.interest_over_time()
-    # print(trends_overtime)
 
     return render(request, 'top_products/home.html',
                   {"best_seller_categories": best_seller_categories, })
@@ -154,14 +139,13 @@ def products_trends(request):
         for product in products[:3]:
             name = product.find_element(By.XPATH,
                                         './/div[@class="_cDEzb_p13n-sc-css-line-clamp-3_g3dy1"]')
-            # './/div[@class="._cDEzb_p13n-sc-css-line-clamp-2_EWgCb"]')
             product_names.append(name.text)
 
         for product in products:
             images = WebDriverWait(product, 10).until(
                 EC.presence_of_all_elements_located(
-                    (By.XPATH, './/img[@class="a-dynamic-image p13n-sc-dynamic-image p13n-product-image"]'))
-
+                    (By.XPATH,
+                     './/img[@class="a-dynamic-image p13n-sc-dynamic-image p13n-product-image"]'))
             )
 
         for image in images:
