@@ -113,8 +113,11 @@ def format_content(title_list):
     # loop thru the product names to be enter to message content
     format_title_list = [f'"{title}"' for title in title_list]
 
-    message_content = f"As a user, I need to simplify the product title so it can be effectively searched on Google Trends. Please remove any brand names and references to quantity from each of these {amount_product} product titles: \
-    {', '.join(format_title_list)}. Return only {amount_product} simplified each product title with 2 to 5 words with no delimiters in a array"
+    message_content = f"As a user, I need to simplify the product title so it can be effectively \
+        searched on Google Trends. Please remove any brand names and references to quantity from \
+        each of these {amount_product} product titles: \
+        {', '.join(format_title_list)}. Return only {amount_product} \
+        simplified each product title with 2 to 5 words with no delimiters in a array"
 
     print("this is the message content: ", message_content)
 
