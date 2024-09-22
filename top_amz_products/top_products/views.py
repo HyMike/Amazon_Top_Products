@@ -11,6 +11,8 @@ from .forms import CategoryForm
 from openai import OpenAI
 import json
 from serpapi import GoogleSearch
+from selenium.webdriver.chrome.service import Service
+
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -122,9 +124,19 @@ def products_trends(request):
     if request.method == 'POST':
         category_url = request.POST.get('selected_category_url')
         category_name = request.POST.get('selected_category_name')
-        print(category_name)
-        driver = webdriver.Chrome(service=ChromeService(
-            ChromeDriverManager().install()))
+
+        # adding specific verions for chrome driver to fix none type error
+
+        desired_version = "120"
+
+        # Install the specified version of ChromeDriver
+        driver_path = ChromeDriverManager(version=desired_version).install()
+
+        # Create a Chrome driver instance using the installed ChromeDriver
+        driver = webdriver.Chrome(service=Service(driver_path))
+
+        # driver = webdriver.Chrome(service=ChromeService(
+        #     ChromeDriverManager().install()))
 
         driver.get(category_url)
         product_names = []
@@ -140,7 +152,7 @@ def products_trends(request):
             name = product.find_element(By.XPATH,
                                         './/div[@class="_cDEzb_p13n-sc-css-line-clamp-3_g3dy1"]')
             product_names.append(name.text)
-
+        # Grabs the images from amazon
         for product in products:
             images = WebDriverWait(product, 10).until(
                 EC.presence_of_all_elements_located(
@@ -152,7 +164,6 @@ def products_trends(request):
             product_images.append(image.get_attribute("src"))
 
         # returns list of 3 best sellers on Amazon from selected category that has been striped of title and package amounts to be searched
-        # testing images
 
         formatted_content = json.loads(format_content(product_names))
 
@@ -183,6 +194,7 @@ def get_trending_data(amz_product_list):
     results = search.get_dict()
     interest_over_time = results["interest_over_time"]
     dict_data = extract_data(interest_over_time)
+    print(dict_data)
     return dict_data
 
 # extract data to dictionary key being time vs value == the value
